@@ -7,13 +7,8 @@ import java.util.StringTokenizer;
  * Level : BaekJoon Gold 5
  * Difficulty : 중
  * URL : https://www.acmicpc.net/problem/14500
- * Select1 : 
- * Thinking : 
- * Method : 
- * Help : 
- * Error1 : 
- * Result : 
- * Plus1 : 
+ * Method : DFS
+ * Result : 다른사람 풀이 보고 구현
  */
 public class BJ14500_테트로미노_DFS {
 	static int N, M, ans;
@@ -46,7 +41,7 @@ public class BJ14500_테트로미노_DFS {
 	}
 	
 	static void dfs(int i, int j, int depth, int sum) {
-		if(depth == 4) {
+		if(depth == 4) {				// 블록 4개 되도록 했으면 최댓값 구하고 리턴
 			ans = Math.max(ans, sum);
 			return;
 		}
@@ -56,20 +51,20 @@ public class BJ14500_테트로미노_DFS {
 			int nj = j + dj[d];
 			if(ni < 0 || ni >= N || nj < 0 || nj >= M || visit[ni][nj]) continue;
 			visit[ni][nj] = true;
-			if(depth == 2) dfs(i, j, depth + 1, sum + board[ni][nj]);
+			if(depth == 2) dfs(i, j, depth + 1, sum + board[ni][nj]);		// 이게 중요!!! 
 			dfs(ni, nj, depth + 1, sum + board[ni][nj]);
 			visit[ni][nj] = false;
 		}
 		
 	}
-//	
-//	static void print() {
-//		for(int i = 0 ; i < N ; i++) {
-//			for(int j = 0 ; j < M ; j++) {
-//				System.out.print(visit[i][j] ? 1 + " " : 0 + " ");
-//			}
-//			System.out.println();
-//		}
-//		System.out.println("-----------------------------------");
-//	}
+	
+	static void print() {
+		for(int i = 0 ; i < N ; i++) {
+			for(int j = 0 ; j < M ; j++) {
+				System.out.print(visit[i][j] ? 1 + " " : 0 + " ");
+			}
+			System.out.println();
+		}
+		System.out.println("-----------------------------------");
+	}
 }

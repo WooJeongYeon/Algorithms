@@ -9,13 +9,12 @@ import java.util.StringTokenizer;
  * Level : SWEA D4
  * Time : 30분
  * URL : https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV_mSnmKUckDFAWb
- * Select1 : 
- * Thinking : 
- * Method : 
- * Help : 
- * Error1 : 
- * Result : 
- * Plus1 : 
+ * Method : MST - kruskal, find-union, comparable
+ * Error1 : 가중치 합이 int범위 넘어가서 long 사용해야 함
+ * Error2 : union함수 잘못짰었음
+ * Result :	복습 
+ * Plus1 : int형은 compareTo 쓸 때 음수여도 괜찮으므로 그냥 -하면 됨
+ * 			return Integer.compare(this.weight, o.weight); 아니면 이런 식으로 Integer.compare 쓰던지
  */
 public class SW3124_최소스패닝트리_Kruskal_재 {
 	static int TC, V, E;
