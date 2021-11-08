@@ -5,16 +5,16 @@ import java.util.StringTokenizer;
 /*
  * Date : 2021.11.08
  * Level : BaekJoon Gold 5
- * Difficulty : 쉬움(SW4013_특이한자석과 같은 문제 - 풀었었음)
+ * Difficulty : 중하(SW4013_특이한자석과 같은 문제 - 풀었었음)
  * Time : 45분
  * URL : https://www.acmicpc.net/problem/14891
- * Select1 : 
+ * Select1 : 배열 회전 시계방향, 반시계방향 안나누고 한 for문으로 돌림
  * Thinking : 
- * Method : 
- * Help : 
- * Error1 : 
- * Result : 
- * Plus1 : 
+ * Method : 배열, 시뮬레이션
+ * Error1 : 방향을 반대로 생각하고 돌림 
+ * Result : 논리만 대충 쓰고 코드로 옮겼다.
+ * Plus1 : 이럴수가. 이걸 1달좀전에 풀었는데 그때는 ArrayList로 앞에 뒤에 뺐다꼈다했네
+ * 			list생각도 못했는데ㅋㅋㅋㅋㅋㅋㅋ 예전이 더 낫다...ㅠㅠㅠ
  */
 public class BJ14891_톱니바퀴 {
 	static int K, ans;
