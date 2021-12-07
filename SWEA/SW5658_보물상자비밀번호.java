@@ -18,7 +18,8 @@ import java.util.StringTokenizer;
  * 		- Collections.sort + Collections.reverse하면 내림차순 정렬됨
  * 		- Arrays.sort(arr,Collections.reverseOrder()) 도 내림차순 정렬 -> pq할당해줄 때 Collections.reverseOrder()로 최댓값 꺼내도록 할 수 있음
  * 		- 진수변환 Integer.parseInt(hex, 16) -> hex를 16진수로 인식해 10진수로 변환해줌!!
- * Plus1 : 
+ * Plus1 : 돌릴 필요 없이 인덱스만 처리해줌 되고 s 뒤에 패딩처럼 앞에 N/4-1개 붙여주면 복잡하게 안해도 됨
+ * Plus2 : 구간도 나눌 필요 없이 인덱스 0부터 시작해서 N / 4씩 처리해주면 됨... 생각을 하자ㅠㅠㅠ 문제 그대로 풀 필요 없었다 
  */
 public class SW5658_보물상자비밀번호 {
 	static int TC, N, K, ans;
