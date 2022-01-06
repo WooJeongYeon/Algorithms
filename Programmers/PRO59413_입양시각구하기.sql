@@ -1,0 +1,17 @@
+# 가상테이블 
+SELECT HOURS.H, COUNT(ANIMAL_ID)
+FROM ANIMAL_OUTS OUTS
+RIGHT OUTER JOIN (
+    WITH RECURSIVE rgen (n)
+      AS (SELECT 1
+           UNION ALL
+          SELECT n+1
+            FROM rgen
+           WHERE n < 24
+         )
+    SELECT N - 1 AS H
+    FROM rgen
+) HOURS 
+ON HOUR(OUTS.DATETIME) = HOURS.H
+GROUP BY HOURS.H
+ORDER BY HOURS.H;
