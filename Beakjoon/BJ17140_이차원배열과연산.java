@@ -9,11 +9,13 @@ import java.util.StringTokenizer;
  * Difficulty : 중
  * Why : 버그 어려우...
  * URL : https://www.acmicpc.net/problem/17140
- * Select1 : 배열 돌려서 하던지 VS R, C일 때  VS R, C
+ * Select1 : R, C 경우, 배열 돌려서 같은 메소드 쓰던지 
+ * 			VS R, C일 때 따로 나눠서 메소드 만들기 
+ * 			VS 메소드마다 R, C 나눠서 작업(이거 선택)
  * Thinking : 100까지 + 1번 더 체크해야 함
  * Method : 순열, PQ
  * Error1 : pq를 얘를 매 시간마다 초기화하게 놨었음(매 행마다 해야 함)
- * Error2 : 
+ * Error2 : time을 0부터 시작해서 100까지 검사하는걸 잘못함(101번 검사)
  * Result : 1시간 디버깅하뮤ㅠㅠ
  */
 public class BJ17140_이차원배열과연산 {
