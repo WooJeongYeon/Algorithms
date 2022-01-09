@@ -3,12 +3,25 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.PriorityQueue;
 import java.util.StringTokenizer;
-
+/*
+ * Date : 2022.01.09
+ * Level : BaekJoon Gold 4
+ * Difficulty : 중
+ * Why : 버그 어려우...
+ * URL : https://www.acmicpc.net/problem/17140
+ * Select1 : 배열 돌려서 하던지 VS R, C일 때  VS R, C
+ * Thinking : 100까지 + 1번 더 체크해야 함
+ * Method : 순열, PQ
+ * Error1 : pq를 얘를 매 시간마다 초기화하게 놨었음(매 행마다 해야 함)
+ * Error2 : 
+ * Result : 1시간 디버깅하뮤ㅠㅠ
+ */
 public class BJ17140_이차원배열과연산 {
 	static int[][] arr;
 	static int[] cntArr;
 	static int r, c, k;
-	static int time = 1, R, C, newSize;
+	static int time, R, C, newSize;
+	static boolean isPossible;
 	static PriorityQueue<Number> pq;
 	static final int N = 100;
 	static final int INPUT_N = 3;
@@ -30,6 +43,7 @@ public class BJ17140_이차원배열과연산 {
 		
 		if(arr[r][c] != k) {
 			for(int i = 0 ; i < N ; i++) {
+				time++;
 				newSize = 0;
 				int max = R >= C ? R : C;
 				for(int n = 0 ; n < max ; n++) {
@@ -42,15 +56,16 @@ public class BJ17140_이차원배열과연산 {
 					}
 					operate(n);
 				}
-				if(arr[r][c] == k) break;
+				if(arr[r][c] == k) {
+					isPossible = true;
+					break;
+				}
 				if(R >= C) C = newSize;
 				else R = newSize;
-				pq.clear();
-				time++;
 			}
+			if(!isPossible) time = -1;
 		}
 		
-		if(time > 100) time = -1;
 		System.out.println(time);
 	}
 	private static void setCntArr(int n) {
@@ -65,6 +80,7 @@ public class BJ17140_이차원배열과연산 {
 		}
 	}
 	private static void setPQ() {
+		pq.clear();			// 얘를 매 시간마다 초기화하게 놨었음(그래도 틀리네...ㅠㅠㅠㅠ)
 		for(int i = 1 ; i <= N ; i++) {
 			if(cntArr[i] != 0) pq.offer(new Number(i, cntArr[i]));
 		}
