@@ -2,7 +2,7 @@ package baekjoon;
 
 import java.util.Arrays;
 import java.util.Scanner;
-// 에라토스테네스의 체
+// 에라토스테네스의 체 + 슬라이딩 윈도우
 // decimalArr 배열 크기 만들어놓고 len 나중에 구할 수도 있네
 // 소수 구하기 -> 시작 수는 sqrt(N)까지 진행해도 됨
 
