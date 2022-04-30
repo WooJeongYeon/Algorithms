@@ -4,22 +4,22 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 /*
- * Date : 2022.04.30(Àç)
+ * Date : 2022.04.30(ì¬)
  * Level : BaekJoon Gold 2
- * Difficulty : Áß»ó
- * Time : 40m
- * Method : ±¸Çö
- * Error1 : blockDfs¿¡ dfs È£ÃâÇÔ
- * Error2 : °°Àº ¼ıÀÚ ¾Öµé³¢¸®¸¸ ºí·Ï Çü¼º
- * Error3 : answer¿Í nowÀÇ ÃÊ±â info ¼³Á¤
- * Error4 : ¹«Áö°³´Â ¾îµğ¿¡³ª Æ÷ÇÔµÉ ¼ö ÀÖÀ½
- * Error5 : break·Î ¹«Á¶°Ç ³¡³ª°Ô ÇØ³õÀ½...
- * Error6 : Å©±â°¡ °¡Àå Å« ºí·Ï ±×·ì Ã£´Â°Å!¤»¤»¤»¤»¤»¤»¤»¤»
- * Error7 : ±âÁØ ºí·Ï - ÀÏ¹İ ºí·Ï.... 
- * Result : ¿¹Àü¿¡ Ç¬°Ô ´õ ±ò²ûÇÑµ¥..? Àú ºñ±³ÇÏ´Â ºÎºĞ Comparable·Î ÇØ¼­ µÎ°³ Á¤·Ä½ÃÄÑ¼­ ´ä ±¸Çß³×
+ * Difficulty : ì¤‘ìƒ
+ * Time : 2h
+ * Method : êµ¬í˜„
+ * Error1 : blockDfsì— dfs í˜¸ì¶œí•¨
+ * Error2 : ê°™ì€ ìˆ«ì ì• ë“¤ë¼ë¦¬ë§Œ ë¸”ë¡ í˜•ì„±
+ * Error3 : answerì™€ nowì˜ ì´ˆê¸° info ì„¤ì •
+ * Error4 : ë¬´ì§€ê°œëŠ” ì–´ë””ì—ë‚˜ í¬í•¨ë  ìˆ˜ ìˆìŒ
+ * Error5 : breakë¡œ ë¬´ì¡°ê±´ ëë‚˜ê²Œ í•´ë†“ìŒ...
+ * Error6 : í¬ê¸°ê°€ ê°€ì¥ í° ë¸”ë¡ ê·¸ë£¹ ì°¾ëŠ”ê±°!ã…‹ã…‹ã…‹ã…‹ã…‹ã…‹ã…‹ã…‹
+ * Error7 : ê¸°ì¤€ ë¸”ë¡ - ì¼ë°˜ ë¸”ë¡.... 
+ * Result : ì˜ˆì „ì— í‘¼ê²Œ ë” ê¹”ë”í•œë°..? ì € ë¹„êµí•˜ëŠ” ë¶€ë¶„ Comparableë¡œ í•´ì„œ ë‘ê°œ ì •ë ¬ì‹œì¼œì„œ ë‹µ êµ¬í–ˆë„¤
  */
 
-public class BJ21609_»ó¾îÁßÇĞ±³_Àç {
+public class BJ21609_ìƒì–´ì¤‘í•™êµ_ì¬ {
 	static int N, M, ans;
 	static int[][] map;
 	static boolean[][] allVisited, visited;
