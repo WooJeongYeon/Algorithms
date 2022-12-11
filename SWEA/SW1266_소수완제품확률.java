@@ -1,91 +1,52 @@
-package swea;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.StringTokenizer;
 
+/*
+- 독립시행확률
+- Pr = mCr(p^r)(g^n-r)
+    - 아래의 P(A)는 이 경우들을 다 더한 것
+- P(AUB) = P(A) + P(B) - P(A교집합B) = P(A) + P(B) - P(A) * P(B)
+- A와 B가 독립사건일 때
+- P(A교집합B) = P(A) * P(B)
+- nCr의 경우를 구하는 거면 그냥 계산하면 되네.. 나 왜 부분집합썼지ㅋㅋㅋ
+ */
 public class SW1266_소수완제품확률 {
-    static int TC, allCase;
-    static double sucA, sucB, failA, failB, ansA, ansB, ans;
+    static int TC, ans;
+    static double pA, pB, resultA, resultB;
+    static int[] primeArr = {2, 3, 5, 7, 11, 13, 17};
+    static long[] combArr;
     static final int N = 18;
-    static int[] notPrime = {1, 4, 6, 8, 9, 10, 12, 14, 15, 16, 18};
-    static int[] cntArr;
-    static Set<Integer> set;
-
     public static void main(String[] args) throws IOException {
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st;
         StringBuilder sb = new StringBuilder();
         TC = Integer.parseInt(in.readLine());
-        cntArr = new int[N + 1];
-        set = new HashSet<>();
-        allCase = (1 << N);
-        for(int i = 0 ; i < notPrime.length ; i++) {
-            set.add(notPrime[i]);
+        combArr = new long[N + 1];
+        combArr[0] = 1;
+        for(int i = 1 ; i <= N ; i++) {
+            combArr[i] = combArr[i - 1] * (N - i + 1) / i;
         }
-
-        subset(0, 0);
-
-        System.out.println(allCase);
-        System.out.println(Arrays.toString(cntArr));
-
+        System.out.println();
         for(int tc = 1 ; tc <= TC ; tc++) {
-            System.out.println(tc + " -----------------------");
-            ans = 0.0;
-            ansA = 0.0;
-            ansB = 0.0;
+            ans = 0;
             st = new StringTokenizer(in.readLine());
-            sucA = Integer.parseInt(st.nextToken());
-            failA = 100 - sucA;
-            sucB = Integer.parseInt(st.nextToken());
-            failB = 100 - sucB;
-            sucA /= 100;
-            failA /= 100;
-            sucB /= 100;
-            failB /= 100;
-            System.out.println(sucA + " " + failA);
-            System.out.println(sucB + " " + failB);
-
-            for(int i = 0 ; i < notPrime.length ; i++) {
-                int successCnt = notPrime[i];
-                int failCnt = N - notPrime[i];
-                double resultA = 1.0, resultB = 1.0;
-                for(int j = 0 ; j < successCnt ; j++) {
-                    resultA *= sucA;
-                    resultB *= sucB;
-                }
-                for(int j = 0 ; j < failCnt ; j++) {
-                    resultA *= failA;
-                    resultB *= failB;
-                }
-                System.out.println(i + " : " + resultA + " " + resultB);
-
-                ansA += (resultA * cntArr[notPrime[i]]) / allCase;
-                ansB += (resultB * cntArr[notPrime[i]]) / allCase;
+            pA = Integer.parseInt(st.nextToken()) / 100.0;
+            pB = Integer.parseInt(st.nextToken()) / 100.0;
+            resultA = 0.0;
+            resultB =  0.0;
+            for(int i = 0 ; i < primeArr.length ; i++) {
+                double nowA = 0.0, nowB = 0.0;
+                nowA = combArr[primeArr[i]] * Math.pow(pA, primeArr[i]) * Math.pow(1 - pA, N - primeArr[i]);
+                nowB = combArr[primeArr[i]] * Math.pow(pB, primeArr[i]) * Math.pow(1 - pB, N - primeArr[i]);
+                resultA += nowA;
+                resultB += nowB;
             }
 
-            ans = ansA * ansB;
-
-            sb.append("#").append(tc).append(" ").append(ans).append("\n");
+            sb.append("#").append(tc).append(" ").append(String.format("%.6f", resultA + resultB - resultA * resultB)).append("\n");
         }
 
         System.out.println(sb);
     }
-
-    private static void subset(int cnt, int idx) {
-        if(idx == N) {
-            if(set.contains(cnt)) {
-                cntArr[cnt]++;
-            }
-            return;
-        }
-        subset(cnt, idx + 1);
-        subset(cnt + 1, idx + 1);
-    }
-
-
 }
