@@ -8,7 +8,7 @@ import java.util.Queue;
  * Method : BFS
  */
 public class PRO1844_게임맵최단거리 {
-    int[] di = {-1, 1, 0, 0};
+    int[] di = {-1, 1, 0, 0}; 
     int[] dj = {0, 0, -1, 1};
     public int solution(int[][] maps) {
         return bfs(maps);
