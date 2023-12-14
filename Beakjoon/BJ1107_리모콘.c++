@@ -24,7 +24,6 @@ int main() {
         isBroken[num] = true;
     }
 
-    
     if(!isBroken[0])
         min = (N + 1) < min ? (N + 1) : min;
 
