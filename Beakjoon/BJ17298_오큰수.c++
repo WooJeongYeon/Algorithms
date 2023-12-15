@@ -4,20 +4,18 @@
 int main() {
     int N, top = 0;
     int arr[SIZE];
-    int cntArr[SIZE] = {0};
     int stack[SIZE];
 
     scanf("%d", &N);
     for(int i = 0 ; i < N ; i++) {
         scanf("%d", &arr[i]);
-        cntArr[arr[i]]++;
     }
 
     stack[top++] = 0;
 
     for(int i = 1 ; i < N ; i++) {
         while(true) {
-            if(top > 0 && cntArr[arr[stack[top - 1]]] < cntArr[arr[i]]) {
+            if(top > 0 && arr[stack[top - 1]] < arr[i]) {
                 arr[stack[--top]] = arr[i];
             } else {
                 stack[top++] = i;
