@@ -2,7 +2,7 @@
 
 Hash Function을 사용해 고정된 크기의 값으로 변환하는 작업이다. Hash Function을 사용해 특정 해시값을 알아내고 그 값을 인덱스로 변환해 key와 value값을 bucket에 저장한다.
 
-같은 해시값을 가지게 되는 경우, **충돌(Collusion)**이 발생할 수 있다.
+같은 해시값을 가지게 되는 경우, **충돌(Collusion)** 이 발생할 수 있다.
 
 Java에서 HashTable과 HashMap은 같은 역할을 가지며, HashTable은 Multi-Thread 환경에서 사용될 수 있다.
 
@@ -88,7 +88,7 @@ unsigned long djb2(const char* str) {
 
 [이론1](https://baeharam.netlify.app/posts/data%20structure/hash-table)
 
-[이론2]([[Lecture 4] Hash Function / 해시 함수](https://devjourney7.tistory.com/118))
+[이론2](https://devjourney7.tistory.com/118)
 
 [djb2 함수](https://zoosso.tistory.com/948)
 
